@@ -4,6 +4,7 @@ import {v4 as uuidv4} from 'https://cdn.jsdelivr.net/npm/uuid@11.0.2/+esm'
 const mainEl = document.querySelector('.main');
 const cardsEl = document.querySelector('.cards');
 const ordersEl = document.querySelector('.orders');
+const payModal = document.querySelector('.pay-modal');
 
 let orderList = [];
 
@@ -45,9 +46,25 @@ document.addEventListener('click', (event) => {
     } else if (event.target.dataset.removeOrder) {
         orderList = orderList.filter((order) => order.uuid !== event.target.dataset.removeOrder)
         renderOrders();
+    } else if (event.target.classList.contains('complete-order-btn')) {
+        payModal.showModal();
+    } else if (event.target.classList.contains('close-modal')) {
+        payModal.close();
     }
 })
- 
+
+payModal.addEventListener("click", (e) => {
+    const dialogDimensions = payModal.getBoundingClientRect();
+    if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+    ) {
+        payModal.close();
+    }
+});
+
 function renderOrders() {
     if(orderList.length === 0) {
         ordersEl.innerHTML = '';

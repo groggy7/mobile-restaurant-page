@@ -104,3 +104,66 @@ h2, p {
 .total-price-section {
     padding: 12px 0;
 }
+
+.pay-modal {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 360px;
+    width: 100%;
+    position: relative;
+}
+
+.pay-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+}
+
+.pay-modal-header {
+    margin-bottom: 20px;
+}
+
+.pay-modal-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+.close-modal {
+    font-size: 40px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s;
+    position: absolute;
+    top: 0;
+    right: 16px;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.order-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.order-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+.order-form button:hover {
+    background-color: #45a049;
+}

@@ -20,6 +20,18 @@
             <div class="cards"></div>
             <div class="orders"></div>
         </main>
+        <dialog class="pay-modal">
+            <div class="pay-modal-header">
+                <h2 class="pay-modal-title">Enter card details</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <form class="order-form" method="dialog">
+                <input type="text" id="customer-name" placeholder="Enter your name" required>
+                <input type="number" id="card-number" placeholder="Enter card number" required>
+                <input type="number" id="cvv" placeholder="Enter CVV" minlength="3" maxlength="3" required>
+                <button type="submit">Pay</button>
+            </form>
+        </dialog>
     </div>
 </body>
 </html>
