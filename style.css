@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Smythe", system-ui;
+}
+
+h2, p {
+    margin: 0;
+}
+
+.container {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.header {
+    background-image: url('./assets/header.png');
+    height: 167px;
+}
+
+.main {
+    padding: 20px;
+}
+
+.product-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 1px solid #DEDEDE;
+    padding: 20px;
+}
+
+.product-icon {
+    color: green;
+}
+
+.product-add {
+    border: 1px solid #DEDEDE;
+    border-radius: 9999px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+}
+
+.product-add:hover {
+    color: green;
+    border-color: green;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.order-section {
+    padding: 20px 0;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.order-section-header {
+    text-align: center;
+}
+
+.product-order {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid black;
+}
+
+.remove-product-btn {
+    background: none;
+    border: none;
+    color: #DEDEDE;
+}
+
+.product-order-price {
+    margin-left: auto;
+}
+
+.complete-section {
+    text-align: center;
+}
+
+.complete-order-btn {
+    background-color: #16DB99;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 8px;
+}
+
+.complete-order-btn:hover {
+    background-color: #13C88A;
+}
+
+.total-price-section {
+    padding: 12px 0;
+}
