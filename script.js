@@ -1,12 +1,41 @@
 import products from './data.js'
 import {v4 as uuidv4} from 'https://cdn.jsdelivr.net/npm/uuid@11.0.2/+esm'
 
-const mainEl = document.querySelector('.main');
 const cardsEl = document.querySelector('.cards');
 const ordersEl = document.querySelector('.orders');
 const payModal = document.querySelector('.pay-modal');
 
 let orderList = [];
+
+document.addEventListener('click', (event) => {
+    const productElement = event.target.closest('.product-add');
+    if (productElement && productElement.dataset.product) {
+        const productIndex = Number(productElement.dataset.product);
+        const selectedProduct = products[productIndex];
+
+        orderList.push({
+            name: selectedProduct.name,
+            price: selectedProduct.price,
+            uuid: uuidv4()
+        });
+        renderOrders();
+    } else if (event.target.dataset.removeOrder) {
+        orderList = orderList.filter((order) => order.uuid !== event.target.dataset.removeOrder)
+        renderOrders();
+    } else if (event.target.classList.contains('complete-order-btn')) {
+        payModal.showModal();
+    } else if (event.target.classList.contains('close-modal')) {
+        payModal.close();
+    } else if (event.target.classList.contains('complete-payment-btn')) {
+        orderList = [];
+        renderOrders();
+
+        const orderMessage = `<div class="order-message">
+            <p>Thanks, James! Your order is on its way!</p>
+        </div>`;
+        ordersEl.innerHTML = orderMessage;
+    }
+})
 
 function renderProducts() {
     let cardsHTML = "";
@@ -28,30 +57,6 @@ function renderProducts() {
     })
     cardsEl.innerHTML = cardsHTML; 
 }
-
-document.addEventListener('click', (event) => {
-    const productElement = event.target.closest('.product-add');
-    if (productElement && productElement.dataset.product) {
-        const productIndex = Number(productElement.dataset.product);
-        const selectedProduct = products[productIndex];
-        
-        const order = {
-            name: selectedProduct.name,
-            price: selectedProduct.price,
-            uuid: uuidv4()
-        }
-
-        orderList.push(order);
-        renderOrders();
-    } else if (event.target.dataset.removeOrder) {
-        orderList = orderList.filter((order) => order.uuid !== event.target.dataset.removeOrder)
-        renderOrders();
-    } else if (event.target.classList.contains('complete-order-btn')) {
-        payModal.showModal();
-    } else if (event.target.classList.contains('close-modal')) {
-        payModal.close();
-    }
-})
 
 payModal.addEventListener("click", (e) => {
     const dialogDimensions = payModal.getBoundingClientRect();
