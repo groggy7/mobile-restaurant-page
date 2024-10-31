@@ -62,6 +62,7 @@ h2, p {
     gap: 8px;
     flex-direction: column;
     justify-content: space-between;
+    font-size: 1.2rem;
 }
 
 .order-section-header {
@@ -78,7 +79,12 @@ h2, p {
 .remove-product-btn {
     background: none;
     border: none;
-    color: #DEDEDE;
+    color: #aeaeae;
+    cursor: pointer;
+}
+
+.remove-product-btn:hover {
+    color: #808080;
 }
 
 .product-order-price {
@@ -103,6 +109,10 @@ h2, p {
 
 .total-price-section {
     padding: 12px 0;
+}
+
+.total-price {
+    float: right;
 }
 
 .pay-modal {
