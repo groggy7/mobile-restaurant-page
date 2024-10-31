@@ -27,13 +27,21 @@ document.addEventListener('click', (event) => {
     } else if (event.target.classList.contains('close-modal')) {
         payModal.close();
     } else if (event.target.classList.contains('complete-payment-btn')) {
-        orderList = [];
-        renderOrders();
+        event.preventDefault();
+        const form = document.querySelector('.order-form');
 
-        const orderMessage = `<div class="order-message">
-            <p>Thanks, James! Your order is on its way!</p>
-        </div>`;
-        ordersEl.innerHTML = orderMessage;
+        if (form.checkValidity()) {
+            orderList = [];
+            renderOrders();
+
+            const orderMessage = `<div class="order-message">
+                <p>Thanks, James! Your order is on its way!</p>
+            </div>`;
+            payModal.close();
+            ordersEl.innerHTML = orderMessage;
+        } else {
+            form.reportValidity();
+        }
     }
 })
 
